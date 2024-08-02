@@ -2,10 +2,10 @@ Sorting Algorithms
 Welcome to the Sorting Algorithms repository! This repository contains a collection of various sorting algorithms implemented in Java. Each sorting algorithm is designed to demonstrate different approaches to sorting data, showcasing their functionalities and performance characteristics.
 
 ### Table of Contents
-#### [[Overview]]
-#### [[Algorithms]]
-#### [[Usage]]
-#### [[Contributing]]
+#### [Overview]
+#### [Algorithms]
+#### [Usage]
+#### [Contributing]
 
 ## Overview
 This repository provides Java implementations for a variety of sorting algorithms. The purpose of this project is to demonstrate the different sorting techniques and their efficiencies. The algorithms included in this repository are:
@@ -45,8 +45,7 @@ Navigate to the project directory:
 cd Sorting-Algorithms
 
 ## Compile the Java files:
-javac Main.java BubbleSort.java RadixSort.java SelectionSort.java CountingSort.java InsertionSort.java QuickSort.java <br>
-or using the Makefile.sh it will automatically compile the files and add them to a dir called out <br>
+Using the Makefile.sh it will automatically compile the files and add them to a dir called out <br>
 
 ## Run the Main class:
 make run CLASS=com.sort.main.Main
