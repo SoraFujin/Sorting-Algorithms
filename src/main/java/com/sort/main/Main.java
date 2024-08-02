@@ -133,7 +133,8 @@ public class Main {
 				System.out.println("4. Count Sort");
 				System.out.println("5. Insertion Sort");
 				System.out.println("6. Quick Sort");
-				System.out.println("7. Exit");
+				System.out.println("7. Merge Sort");
+				System.out.println("8. Exit");
 				option = scanner.nextInt();
 
 				switch (option) {
@@ -204,6 +205,17 @@ public class Main {
 						unsort(arr);
 						break;
 					case 7:
+						long startTimeMerge = System.nanoTime();
+						System.out.println("Merge Sort: ");
+						sort.MergeSort(arr);
+						long endTimeMerge = System.nanoTime();
+						long durationMerge = (endTimeMerge - startTimeMerge) / 1_000; 
+						System.out.println("Time taken to sort: " + durationMerge + " milliseconds");
+						print(arr);
+						System.out.println("----------------------------");
+						unsort(arr);
+						break;
+					case 8:
 						System.out.println("Exiting...");
 						break;
 					default:

@@ -2,25 +2,25 @@ package com.sort.main;
 
 public class SortingAlgorithms {
 
-    private static int data[] = {64, 34, 25, 12, 22, 11, 90, 15, 12, 18, 88, 77, 7, 1, 3, 2, 0, 5, 4, 6}; 
+	private static int data[] = {64, 34, 25, 12, 22, 11, 90, 15, 12, 18, 88, 77, 7, 1, 3, 2, 0, 5, 4, 6}; 
 
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 		System.out.println("original array: ");
 		print();
 		System.out.println("----------------------------");
-    }
+	}
 
-    public void bubbleSort(int[] data) {
-        for (int i = 0; i < data.length - 1; i++) {
-            for (int j = 0; j < data.length - i - 1; j++) {
-                if (data[j] > data[j + 1]) {
+	public void bubbleSort(int[] data) {
+		for (int i = 0; i < data.length - 1; i++) {
+			for (int j = 0; j < data.length - i - 1; j++) {
+				if (data[j] > data[j + 1]) {
 					data[j] = data[j] ^ data[j + 1];
 					data[j + 1] = data[j] ^ data[j + 1];
 					data[j] = data[j] ^ data[j + 1];
-                }
-            }
-        }
-    }
+				}
+			}
+		}
+	}
 
 	public void RadixSort(int[] data) {
 		int max = getMax(data);
@@ -58,7 +58,7 @@ public class SortingAlgorithms {
 		int[] count = new int[max + 1];
 
 		for(int i = 0; i < count.length; i++) 
-				count[i] = 0;
+			count[i] = 0;
 
 		for (int i = 0; i < data.length; i++) 
 			count[data[i]]++;
@@ -90,15 +90,15 @@ public class SortingAlgorithms {
 	}
 
 	public void InsertionSort(int[] data) {
-			for (int i = 1; i < data.length; ++i) {
-				int key = data[i];
-					int j = i - 1;
-					while (j >= 0 && data[j] > key) {
-						data[j + 1] = data[j];
-							j = j - 1;
-					}
-				data[j + 1] = key;
+		for (int i = 1; i < data.length; ++i) {
+			int key = data[i];
+			int j = i - 1;
+			while (j >= 0 && data[j] > key) {
+				data[j + 1] = data[j];
+				j = j - 1;
 			}
+			data[j + 1] = key;
+		}
 	}
 
 	private int getMax(int data[]) {
@@ -113,29 +113,72 @@ public class SortingAlgorithms {
 	public void QuickSort(int[] array, int low, int high) {
 		if (low < high) {
 			int pivotIndex = partition(array, low, high);
-				QuickSort(array, low, pivotIndex - 1);
-				QuickSort(array, pivotIndex + 1, high);
+			QuickSort(array, low, pivotIndex - 1);
+			QuickSort(array, pivotIndex + 1, high);
 		}
 	}
-	
-		public int partition(int[] array, int low, int high) {
-			int pivot = array[high];
-				int i = low - 1;
-				
-				for (int j = low; j < high; j++) {
-					if (array[j] <= pivot) {
-						i++;
-							int temp = array[i];
-							array[i] = array[j];
-							array[j] = temp;
-					}
-				}
-			
-				int temp = array[i + 1];
-				array[i + 1] = array[high];
-				array[high] = temp;
-				return i + 1;
+
+	public int partition(int[] array, int low, int high) {
+		int pivot = array[high];
+		int i = low - 1;
+
+		for (int j = low; j < high; j++) {
+			if (array[j] <= pivot) {
+				i++;
+				int temp = array[i];
+				array[i] = array[j];
+				array[j] = temp;
+			}
 		}
+
+		int temp = array[i + 1];
+		array[i + 1] = array[high];
+		array[high] = temp;
+		return i + 1;
+	}
+
+	public void MergeSort(int[] data) {
+		if (data.length <= 1) {
+			return; 
+		}
+
+		int mid = data.length / 2;
+		int[] leftHalf = new int[mid];
+		int[] rightHalf = new int[data.length - mid];
+
+		for (int i = 0; i < mid; i++) {
+			leftHalf[i] = data[i];
+		}
+		for (int i = mid; i < data.length; i++) {
+			rightHalf[i - mid] = data[i];
+		}
+
+		MergeSort(leftHalf);
+		MergeSort(rightHalf);
+
+		merge(data, leftHalf, rightHalf);
+	}
+
+	private static void merge(int[] data, int[] left, int[] right) {
+		int leftSize = left.length;
+		int rightSize = right.length;
+		int i = 0, j = 0, k = 0;
+
+		while (i < leftSize && j < rightSize) {
+			if (left[i] <= right[j]) {
+				data[k++] = left[i++];
+			} else {
+				data[k++] = right[j++];
+			}
+		}
+
+		while (i < leftSize) {
+			data[k++] = left[i++];
+		}
+		while (j < rightSize) {
+			data[k++] = right[j++];
+		}
+	}
 
 	public static void print() {
 		for (int i = 0; i < data.length; i++) 
