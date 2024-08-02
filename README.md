@@ -45,9 +45,10 @@ Navigate to the project directory:
 cd Sorting-Algorithms
 
 ## Compile the Java files:
-javac Main.java BubbleSort.java RadixSort.java SelectionSort.java CountingSort.java InsertionSort.java QuickSort.java
-or using the Makefile.sh it will automatically compile the files and add them to a dir called out
-Run the Main class:
+javac Main.java BubbleSort.java RadixSort.java SelectionSort.java CountingSort.java InsertionSort.java QuickSort.java <br>
+or using the Makefile.sh it will automatically compile the files and add them to a dir called out <br>
+
+## Run the Main class:
 make run CLASS=com.sort.main.Main
 
 ## Contributing
