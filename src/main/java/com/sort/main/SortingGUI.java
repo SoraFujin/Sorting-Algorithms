@@ -14,8 +14,9 @@ public class SortingGUI extends JFrame {
     private int[] array;
     private Timer timer;
     private int currentStep = 0;
-    private final int DELAY = 500; 
-    private int[][] steps;  
+    private int delay = 500; 
+    private int[][] steps;
+    private JSlider speedSlider; 
 
     public SortingGUI() {
         setTitle("Sorting Algorithm Visualizer");
@@ -41,7 +42,7 @@ public class SortingGUI extends JFrame {
         gbc.gridy = 1;
         gbc.gridwidth = 2;
         inputPanel.add(generateButton, gbc);
-        
+
         add(inputPanel, BorderLayout.NORTH);
 
         arrayPanel = new JPanel() {
@@ -49,9 +50,9 @@ public class SortingGUI extends JFrame {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 if (array != null) {
-                    int width = Math.max(5, getWidth() / array.length);  
-                    int maxHeight = getHeight() - 50;  
-                    int scale = maxHeight / getMax(array); 
+                    int width = Math.max(5, getWidth() / array.length);
+                    int maxHeight = getHeight() - 50;
+                    int scale = maxHeight / getMax(array);
 
                     for (int i = 0; i < array.length; i++) {
                         int barHeight = array[i] * scale;
@@ -83,6 +84,31 @@ public class SortingGUI extends JFrame {
 
         add(buttonPanel, BorderLayout.SOUTH);
 
+        JPanel controlPanel = new JPanel();
+        controlPanel.setLayout(new GridBagLayout());
+
+        JLabel speedLabel = new JLabel("Animation Speed:");
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.gridwidth = 1;
+        controlPanel.add(speedLabel, gbc);
+
+        speedSlider = new JSlider(JSlider.HORIZONTAL, 1, 10, 5);
+        speedSlider.setMajorTickSpacing(1);
+        speedSlider.setMinorTickSpacing(1);
+        speedSlider.setPaintTicks(true);
+        speedSlider.setPaintLabels(true);
+        speedSlider.addChangeListener(e -> updateDelay());
+
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        controlPanel.add(speedSlider, gbc);
+
+        JPanel northPanel = new JPanel(new BorderLayout());
+        northPanel.add(inputPanel, BorderLayout.NORTH);
+        northPanel.add(controlPanel, BorderLayout.SOUTH);
+        add(northPanel, BorderLayout.NORTH);
+
         generateButton.addActionListener(e -> generateArray());
     }
 
@@ -95,7 +121,7 @@ public class SortingGUI extends JFrame {
             }
             array = new int[size];
             for (int i = 0; i < size; i++) {
-                array[i] = (int) (Math.random() * getHeight() / 2); 
+                array[i] = (int) (Math.random() * getHeight() / 2);
             }
             repaint();
         } catch (NumberFormatException ex) {
@@ -108,13 +134,13 @@ public class SortingGUI extends JFrame {
             JOptionPane.showMessageDialog(this, "Please generate an array first.");
             return;
         }
-        
+
         currentStep = 0;
-        timer = new Timer(DELAY, new ActionListener() {
+        timer = new Timer(delay, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (currentStep < steps.length) {
-                    array = steps[currentStep].clone(); 
+                    array = steps[currentStep].clone();
                     repaint();
                     currentStep++;
                 } else {
@@ -123,6 +149,14 @@ public class SortingGUI extends JFrame {
             }
         });
         timer.start();
+    }
+
+    private void updateDelay() {
+        int sliderValue = speedSlider.getValue();
+        delay = Math.max(50, 1000 / sliderValue); 
+        if (timer != null) {
+            timer.setDelay(delay);
+        }
     }
 
     private class SortButtonListener implements ActionListener {
@@ -135,25 +169,25 @@ public class SortingGUI extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             switch (sortType) {
-                case 0: 
+                case 0:
                     bubbleSort();
                     break;
-                case 1: 
+                case 1:
                     radixSort();
                     break;
-                case 2: 
+                case 2:
                     selectionSort();
                     break;
-                case 3: 
+                case 3:
                     countingSort();
                     break;
-                case 4: 
+                case 4:
                     insertionSort();
                     break;
-                case 5: 
+                case 5:
                     quickSort();
                     break;
-                case 6: 
+                case 6:
                     mergeSort();
                     break;
                 case 7:
