@@ -2,24 +2,23 @@ Sorting Algorithms
 Welcome to the Sorting Algorithms repository! This repository contains a collection of various sorting algorithms implemented in Java. Each sorting algorithm is designed to demonstrate different approaches to sorting data, showcasing their functionalities and performance characteristics.
 
 ### Table of Contents
-#### [Overview](#Overview)
-#### [Algorithms](#Algorithms)
-#### [Usage](#Usage)
-#### [Contributing](#Contributing)
+#### [Overview](#overview)
+#### [Algorithms](#algorithms)
+#### [Usage](#usage)
+#### [Contributing](#contributing)
 
 ## Overview
-#Overview
 This repository provides Java implementations for a variety of sorting algorithms. The purpose of this project is to demonstrate the different sorting techniques and their efficiencies. The algorithms included in this repository are:
 
-Bubble Sort
-Radix Sort
-Selection Sort
-Counting Sort
-Insertion Sort
-Quick Sort
+1. **Bubble Sort**
+2. **Radix Sort**
+3. **Selection Sort**
+4. **Counting Sort**
+5. **Insertion Sort**
+6. **Quick Sort**
 
 ## Algorithms:
-#Algorithms
+
 1. **Bubble Sort**
 Bubble Sort is a simple comparison-based sorting algorithm. It repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order. This process is repeated until the list is sorted.
 
