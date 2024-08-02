@@ -5,6 +5,7 @@ Welcome to the Sorting Algorithms repository! This repository contains a collect
 #### [Overview](#overview)
 #### [Algorithms](#algorithms)
 #### [Usage](#usage)
+### [Features](#features)
 #### [Contributing](#contributing)
 
 ## Overview
@@ -40,16 +41,33 @@ Quick Sort is a divide-and-conquer sorting algorithm. It works by selecting a 'p
 ## Usage
 To use any of the sorting algorithms, you can run the Main class which provides a menu to choose the sorting algorithm you want to execute. Here’s a quick guide on how to run the program:
 
-## Clone the repository:
-'git clone https://github.com/SoraFujin/Sorting-Algorithms.git'
-Navigate to the project directory:
-cd Sorting-Algorithms
+# Sorting Algorithms Visualizer
 
-## Compile the Java files:
+Welcome to the Sorting Algorithms Visualizer! This project is a graphical user interface (GUI) tool that visualizes various sorting algorithms. It provides an interactive way to see how different sorting algorithms work by animating the sorting process.
+
+## Features
+
+- Visualize sorting algorithms: Bubble Sort, Radix Sort, Selection Sort, Counting Sort, Insertion Sort, Quick Sort, Merge Sort
+- Dynamic array generation
+- Step-by-step animation of sorting algorithms
+- Interactive GUI with options to generate new arrays and clear the current visualization
+
+## Installation
+
+To run this project on your local machine, follow these steps:
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/SoraFujin/Sorting-Algorithms.git
+
+
+## 2. Compile the Java files:
 Using the Makefile.sh it will automatically compile the files and add them to a dir called out <br>
 
-## Run the Main class:
-make run CLASS=com.sort.main.Main
+## 3. Run the Main class:
+make run CLASS=com.sort.main.Main <br>
+to run the GUI: **make run CLASS=com.sort.main.SortingGUI
 
 ## Contributing
 Contributions are welcome! If you have any suggestions or improvements, please open an issue or submit a pull request.
