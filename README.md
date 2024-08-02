@@ -2,7 +2,7 @@ Sorting Algorithms
 Welcome to the Sorting Algorithms repository! This repository contains a collection of various sorting algorithms implemented in Java. Each sorting algorithm is designed to demonstrate different approaches to sorting data, showcasing their functionalities and performance characteristics.
 
 ### Table of Contents
-#### [Overview]
+#### [Overview](#Overview)
 #### [Algorithms]
 #### [Usage]
 #### [Contributing]
