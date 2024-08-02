@@ -3,9 +3,9 @@ Welcome to the Sorting Algorithms repository! This repository contains a collect
 
 ### Table of Contents
 #### [Overview](#Overview)
-#### [Algorithms]
-#### [Usage]
-#### [Contributing]
+#### [Algorithms](#Algorithms)
+#### [Usage](#Usage)
+#### [Contributing](#Contributing)
 
 ## Overview
 This repository provides Java implementations for a variety of sorting algorithms. The purpose of this project is to demonstrate the different sorting techniques and their efficiencies. The algorithms included in this repository are:
