@@ -9,8 +9,8 @@ public class Main {
 	private static SortingAlgorithms sort = new SortingAlgorithms();
 
 	public static void main(String[] args) {
-		userInput();
-		// testing();
+		// userInput();
+		testing();
 	}
 
 	public static void unsort(int[] data) {
@@ -93,6 +93,16 @@ public class Main {
 		System.out.print("Sorted array: ");
 		print(data);
 		System.out.println("----------------------------");
+
+		long startTimeMerge = System.nanoTime();
+		System.out.println("Merge Sort: ");
+		sort.MergeSort(data);
+		long endTimeMerge = System.nanoTime();
+		long durationMerge = (endTimeMerge - startTimeMerge) / 1_000; 
+		System.out.println("Time taken to sort: " + durationMerge + " milliseconds");
+		print(data);
+		System.out.println("----------------------------");
+		unsort(data);
 	}
 
 	public static void userInput() {
@@ -226,7 +236,7 @@ public class Main {
 				System.out.println("Invalid input. Please enter an integer.");
 				scanner.next(); 
 			}
-		} while (option != 7);
+		} while (option != 8);
 
 		scanner.close();
 	}
