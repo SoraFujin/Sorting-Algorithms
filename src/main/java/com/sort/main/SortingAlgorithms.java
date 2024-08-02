@@ -159,7 +159,7 @@ public class SortingAlgorithms {
 		merge(data, leftHalf, rightHalf);
 	}
 
-	private  void merge(int[] data, int[] left, int[] right) {
+	private void merge(int[] data, int[] left, int[] right) {
 		int leftSize = left.length;
 		int rightSize = right.length;
 		int i = 0, j = 0, k = 0;

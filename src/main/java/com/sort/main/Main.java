@@ -9,8 +9,7 @@ public class Main {
 	private static SortingAlgorithms sort = new SortingAlgorithms();
 
 	public static void main(String[] args) {
-		// userInput();
-		testing();
+		userInput();
 	}
 
 	public static void unsort(int[] data) {
@@ -144,7 +143,8 @@ public class Main {
 				System.out.println("5. Insertion Sort");
 				System.out.println("6. Quick Sort");
 				System.out.println("7. Merge Sort");
-				System.out.println("8. Exit");
+				System.out.println("8. Print Array");
+				System.out.println("9. Exit");
 				option = scanner.nextInt();
 
 				switch (option) {
@@ -226,6 +226,11 @@ public class Main {
 						unsort(arr);
 						break;
 					case 8:
+						System.out.println("Original Array: ");
+						print(arr);
+						System.out.println("----------------------------");
+						break;
+					case 9:
 						System.out.println("Exiting...");
 						break;
 					default:
@@ -236,7 +241,7 @@ public class Main {
 				System.out.println("Invalid input. Please enter an integer.");
 				scanner.next(); 
 			}
-		} while (option != 8);
+		} while (option != 9);
 
 		scanner.close();
 	}

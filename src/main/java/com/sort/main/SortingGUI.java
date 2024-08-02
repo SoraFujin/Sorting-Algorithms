@@ -11,12 +11,14 @@ public class SortingGUI extends JFrame {
     private JTextField sizeField;
     private JPanel arrayPanel;
     private JButton[] sortButtons;
+    private JButton colorButton;
     private int[] array;
     private Timer timer;
     private int currentStep = 0;
     private int delay = 500; 
     private int[][] steps;
     private JSlider speedSlider; 
+    private Color barColor = Color.GREEN; 
 
     public SortingGUI() {
         setTitle("Sorting Algorithm Visualizer");
@@ -56,7 +58,7 @@ public class SortingGUI extends JFrame {
 
                     for (int i = 0; i < array.length; i++) {
                         int barHeight = array[i] * scale;
-                        g.setColor(Color.BLUE);
+                        g.setColor(barColor);
                         g.fillRect(i * width, getHeight() - barHeight, width, barHeight);
                         g.setColor(Color.BLACK);
                         g.drawRect(i * width, getHeight() - barHeight, width, barHeight);
@@ -68,7 +70,7 @@ public class SortingGUI extends JFrame {
         add(arrayPanel, BorderLayout.CENTER);
 
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new GridLayout(2, 4, 10, 10));
+        buttonPanel.setLayout(new GridLayout(3, 4, 10, 10));
 
         String[] buttonLabels = {
             "Bubble Sort", "Radix Sort", "Selection Sort",
@@ -81,6 +83,10 @@ public class SortingGUI extends JFrame {
             buttonPanel.add(sortButtons[i]);
             sortButtons[i].addActionListener(new SortButtonListener(i));
         }
+
+        colorButton = new JButton("Change Color");
+        buttonPanel.add(colorButton);
+        colorButton.addActionListener(e -> chooseColor());
 
         add(buttonPanel, BorderLayout.SOUTH);
 
@@ -156,6 +162,14 @@ public class SortingGUI extends JFrame {
         delay = Math.max(50, 1000 / sliderValue); 
         if (timer != null) {
             timer.setDelay(delay);
+        }
+    }
+
+    private void chooseColor() {
+        Color newColor = JColorChooser.showDialog(this, "Choose Bar Color", barColor);
+        if (newColor != null) {
+            barColor = newColor;
+            repaint();
         }
     }
 
@@ -246,3 +260,4 @@ public class SortingGUI extends JFrame {
         SwingUtilities.invokeLater(() -> new SortingGUI().setVisible(true));
     }
 }
+
