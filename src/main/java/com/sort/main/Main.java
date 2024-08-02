@@ -1,117 +1,65 @@
 package com.sort.main;
 
 public class Main {
-    private static int data[] = {64, 34, 25, 12, 22, 11, 90, 15, 12, 18, 88, 77, 7, 1, 3, 2, 0, 5, 4, 6}; 
+    private static int data[] = {64, 34, 25, 12, 22, 11, 90, 15, 12, 18, 88, 77, 7, 1, 3, 2, 0, 5, 4, 6, 1,231,23,323,42,3423,4 ,234 ,2342, 34,34 ,234,43,53,44,34,5}; 
 
     public static void main(String[] args) {
+		SortingAlgorithms sort = new SortingAlgorithms();
 		System.out.println("original array: ");
 		print();
 		System.out.println("----------------------------");
 
-		CountingSort(data);
+		long startTimeBubble = System.nanoTime();
+		System.out.println("Bubble Sort: ");
+		sort.bubbleSort(data);
+		long endTimeBubble = System.nanoTime(); 
+		long durationBubble = endTimeBubble - startTimeBubble;
+		System.out.println("time took to sort: " + (durationBubble / 1000) + " micro seconds");
+		System.out.print("Sorted array: ");
 		print();
+		System.out.println("----------------------------");
+
+		long startTimeRadix = System.nanoTime();
+		System.out.println("Radix Sort: ");
+		sort.RadixSort(data);
+		long endTimeRadix = System.nanoTime(); 
+		long durationRadix = endTimeRadix - startTimeRadix;
+		System.out.println("time took to sort: " + (durationRadix / 1000) + " micro seconds");
+		System.out.print("Sorted array: ");
+		print();
+		System.out.println("----------------------------");
+
+		long startTimeCount = System.nanoTime();
+		System.out.println("Count Sort: ");
+		sort.CountingSort(data);
+		long endTimeCount = System.nanoTime(); 
+		long durationCount = endTimeCount - startTimeCount;
+		System.out.println("time took to sort: " + (durationCount / 1000) + " micro seconds");
+		System.out.print("Sorted array: ");
+		print();
+		System.out.println("----------------------------");
+
+		long startTimeSelection = System.nanoTime();
+		System.out.println("Selection Sort: ");
+		sort.SelectionSort(data);
+		long endTimeSelection = System.nanoTime(); 
+		long durationSelection = endTimeSelection - startTimeSelection;
+		System.out.println("time took to sort: " + (durationSelection / 1000) + " micro seconds");
+		System.out.print("Sorted array: ");
+		print();
+		System.out.println("----------------------------");
+
+		long startTimeInsertion = System.nanoTime();
+		System.out.println("Insertion Sort: ");
+		sort.InsertionSort(data);
+		long endTimeInsertion = System.nanoTime(); 
+		long durationInsertion = endTimeInsertion - startTimeInsertion;
+		System.out.println("time took to sort: " + (durationInsertion / 1000) + " micro seconds");
+		System.out.print("Sorted array: ");
+		print();
+		System.out.println("----------------------------");
 
     }
-
-    public static void bubbleSort(int[] data) {
-        for (int i = 0; i < data.length - 1; i++) {
-            for (int j = 0; j < data.length - i - 1; j++) {
-                if (data[j] > data[j + 1]) {
-					data[j] = data[j] ^ data[j + 1];
-					data[j + 1] = data[j] ^ data[j + 1];
-					data[j] = data[j] ^ data[j + 1];
-                }
-            }
-        }
-    }
-
-	public static void RadixSort(int[] data) {
-		int max = getMax(data);
-		for (int exp = 1; max / exp > 0; exp *= 10) 
-			countingSort(data, exp);
-	}
-
-
-	private static void countingSort(int[] data, int exp) {
-		int[] output = new int[data.length];
-		int[] count = new int[10]; 
-
-		for (int i = 0; i < 10; i++) 
-			count[i] = 0;
-
-		for (int i = 0; i < data.length; i++) {
-			int digit = (data[i] / exp) % 10;
-			count[digit]++;
-		}
-
-		for (int i = 1; i < 10; i++) 
-			count[i] += count[i - 1];
-
-		for (int i = data.length - 1; i >= 0; i--) {
-			int digit = (data[i] / exp) % 10;
-			output[count[digit] - 1] = data[i];
-			count[digit]--;
-		}
-		System.arraycopy(output, 0, data, 0, data.length);
-	}
-
-	public static void CountingSort(int[] data) {
-		int max = getMax(data);
-		int[] output = new int[data.length];
-		int[] count = new int[max + 1];
-
-		for(int i = 0; i < count.length; i++) 
-				count[i] = 0;
-
-		for (int i = 0; i < data.length; i++) 
-			count[data[i]]++;
-
-		for (int i = 1; i < count.length; i++) 
-			count[i] += count[i - 1];
-
-		for (int i = data.length - 1; i >= 0; i--) {
-			int num = data[i];
-			output[count[num] - 1] = num;
-			count[num]--;
-		}
-		System.arraycopy(output, 0, data, 0, data.length);
-
-	}
-
-	public static void SelectionSort(int[] data) {
-		for (int i = 0; i < data.length - 1; i++) {
-			int minIndex = i;
-			for (int j = i + 1; j < data.length; j++) 
-				if (data[j] < data[minIndex]) 
-					minIndex = j;
-			if (minIndex != i) {
-				data[i] = data[i] ^ data[minIndex];
-				data[minIndex] = data[i] ^ data[minIndex];
-				data[i] = data[i] ^ data[minIndex];
-			}
-		}
-	}
-
-	public static void InsertionSort(int[] data) {
-			for (int i = 1; i < data.length; ++i) {
-				int key = data[i];
-					int j = i - 1;
-					while (j >= 0 && data[j] > key) {
-						data[j + 1] = data[j];
-							j = j - 1;
-					}
-				data[j + 1] = key;
-			}
-	}
-
-	private static int getMax(int data[]) {
-		int max = data[0]; 
-		for (int num : data) {
-			if (num > max) 
-				max = num;
-		}
-		return max;
-	}
 
     public static void print() {
         for (int i = 0; i < data.length; i++) 
